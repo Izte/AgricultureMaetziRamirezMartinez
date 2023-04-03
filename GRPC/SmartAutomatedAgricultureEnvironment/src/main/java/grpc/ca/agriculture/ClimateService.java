@@ -53,22 +53,23 @@ public final class ClimateService {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016Service1.proto\022\020smartAgriculture\")\n\022Te" +
-      "mperatureRequest\022\023\n\013temperature\030\001 \001(\t\"4\n" +
-      "\023TemperatureResponse\022\035\n\025myTemperatureRes" +
-      "ponse\030\001 \001(\t\"#\n\017HumidityRequest\022\020\n\010humidi" +
-      "ty\030\001 \001(\t\".\n\020HumidityResponse\022\032\n\022myHumidi" +
-      "tyResponse\030\001 \001(\t\"#\n\017RainfallRequest\022\020\n\010r" +
-      "ainfall\030\001 \001(\t\".\n\020RainfallResponse\022\032\n\022myR" +
-      "ainfallResponse\030\001 \001(\t2\235\002\n\016climateService" +
-      "\022_\n\016GetTemperature\022$.smartAgriculture.Te" +
-      "mperatureRequest\032%.smartAgriculture.Temp" +
-      "eratureResponse\"\000\022V\n\013GetHumidity\022!.smart" +
-      "Agriculture.HumidityRequest\032\".smartAgric" +
-      "ulture.HumidityResponse\"\000\022R\n\007GetRain\022!.s" +
-      "martAgriculture.RainfallRequest\032\".smartA" +
-      "griculture.RainfallResponse\"\000B\'\n\023grpc.ca" +
-      ".agricultureB\016ClimateServiceP\001b\006proto3"
+      "\n\016Service1.proto\022\020smartAgriculture\"+\n\022Te" +
+      "mperatureRequest\022\025\n\rmytemperature\030\001 \001(\t\"" +
+      "4\n\023TemperatureResponse\022\035\n\025mytemperaturer" +
+      "esponse\030\001 \001(\t\"%\n\017HumidityRequest\022\022\n\nmyhu" +
+      "midity\030\001 \001(\t\".\n\020HumidityResponse\022\032\n\022myhu" +
+      "midityresponse\030\001 \001(\t\"%\n\017RainfallRequest\022" +
+      "\022\n\nmyrainfall\030\001 \001(\t\".\n\020RainfallResponse\022" +
+      "\032\n\022myrainfalrResponse\030\001 \001(\t2\235\002\n\016climateS" +
+      "ervice\022_\n\016GetTemperature\022$.smartAgricult" +
+      "ure.TemperatureRequest\032%.smartAgricultur" +
+      "e.TemperatureResponse\"\000\022V\n\013GetHumidity\022!" +
+      ".smartAgriculture.HumidityRequest\032\".smar" +
+      "tAgriculture.HumidityResponse\"\000\022R\n\007GetRa" +
+      "in\022!.smartAgriculture.RainfallRequest\032\"." +
+      "smartAgriculture.RainfallResponse\"\000B\'\n\023g" +
+      "rpc.ca.agricultureB\016ClimateServiceP\001b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -87,37 +88,37 @@ public final class ClimateService {
     internal_static_smartAgriculture_TemperatureRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartAgriculture_TemperatureRequest_descriptor,
-        new java.lang.String[] { "Temperature", });
+        new java.lang.String[] { "Mytemperature", });
     internal_static_smartAgriculture_TemperatureResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_smartAgriculture_TemperatureResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartAgriculture_TemperatureResponse_descriptor,
-        new java.lang.String[] { "MyTemperatureResponse", });
+        new java.lang.String[] { "Mytemperatureresponse", });
     internal_static_smartAgriculture_HumidityRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_smartAgriculture_HumidityRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartAgriculture_HumidityRequest_descriptor,
-        new java.lang.String[] { "Humidity", });
+        new java.lang.String[] { "Myhumidity", });
     internal_static_smartAgriculture_HumidityResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_smartAgriculture_HumidityResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartAgriculture_HumidityResponse_descriptor,
-        new java.lang.String[] { "MyHumidityResponse", });
+        new java.lang.String[] { "Myhumidityresponse", });
     internal_static_smartAgriculture_RainfallRequest_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_smartAgriculture_RainfallRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartAgriculture_RainfallRequest_descriptor,
-        new java.lang.String[] { "Rainfall", });
+        new java.lang.String[] { "Myrainfall", });
     internal_static_smartAgriculture_RainfallResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_smartAgriculture_RainfallResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartAgriculture_RainfallResponse_descriptor,
-        new java.lang.String[] { "MyRainfallResponse", });
+        new java.lang.String[] { "MyrainfalrResponse", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private RainfallRequest() {
-    rainfall_ = "";
+    myrainfall_ = "";
   }
 
   @java.lang.Override
@@ -50,7 +50,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            rainfall_ = s;
+            myrainfall_ = s;
             break;
           }
           default: {
@@ -85,34 +85,34 @@ private static final long serialVersionUID = 0L;
             grpc.ca.agriculture.RainfallRequest.class, grpc.ca.agriculture.RainfallRequest.Builder.class);
   }
 
-  public static final int RAINFALL_FIELD_NUMBER = 1;
-  private volatile java.lang.Object rainfall_;
+  public static final int MYRAINFALL_FIELD_NUMBER = 1;
+  private volatile java.lang.Object myrainfall_;
   /**
-   * <code>string rainfall = 1;</code>
+   * <code>string myrainfall = 1;</code>
    */
-  public java.lang.String getRainfall() {
-    java.lang.Object ref = rainfall_;
+  public java.lang.String getMyrainfall() {
+    java.lang.Object ref = myrainfall_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      rainfall_ = s;
+      myrainfall_ = s;
       return s;
     }
   }
   /**
-   * <code>string rainfall = 1;</code>
+   * <code>string myrainfall = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getRainfallBytes() {
-    java.lang.Object ref = rainfall_;
+      getMyrainfallBytes() {
+    java.lang.Object ref = myrainfall_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      rainfall_ = b;
+      myrainfall_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -133,8 +133,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getRainfallBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, rainfall_);
+    if (!getMyrainfallBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, myrainfall_);
     }
     unknownFields.writeTo(output);
   }
@@ -145,8 +145,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getRainfallBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, rainfall_);
+    if (!getMyrainfallBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, myrainfall_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -164,8 +164,8 @@ private static final long serialVersionUID = 0L;
     grpc.ca.agriculture.RainfallRequest other = (grpc.ca.agriculture.RainfallRequest) obj;
 
     boolean result = true;
-    result = result && getRainfall()
-        .equals(other.getRainfall());
+    result = result && getMyrainfall()
+        .equals(other.getMyrainfall());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -177,8 +177,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + RAINFALL_FIELD_NUMBER;
-    hash = (53 * hash) + getRainfall().hashCode();
+    hash = (37 * hash) + MYRAINFALL_FIELD_NUMBER;
+    hash = (53 * hash) + getMyrainfall().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -316,7 +316,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      rainfall_ = "";
+      myrainfall_ = "";
 
       return this;
     }
@@ -344,7 +344,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public grpc.ca.agriculture.RainfallRequest buildPartial() {
       grpc.ca.agriculture.RainfallRequest result = new grpc.ca.agriculture.RainfallRequest(this);
-      result.rainfall_ = rainfall_;
+      result.myrainfall_ = myrainfall_;
       onBuilt();
       return result;
     }
@@ -393,8 +393,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(grpc.ca.agriculture.RainfallRequest other) {
       if (other == grpc.ca.agriculture.RainfallRequest.getDefaultInstance()) return this;
-      if (!other.getRainfall().isEmpty()) {
-        rainfall_ = other.rainfall_;
+      if (!other.getMyrainfall().isEmpty()) {
+        myrainfall_ = other.myrainfall_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -426,71 +426,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object rainfall_ = "";
+    private java.lang.Object myrainfall_ = "";
     /**
-     * <code>string rainfall = 1;</code>
+     * <code>string myrainfall = 1;</code>
      */
-    public java.lang.String getRainfall() {
-      java.lang.Object ref = rainfall_;
+    public java.lang.String getMyrainfall() {
+      java.lang.Object ref = myrainfall_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        rainfall_ = s;
+        myrainfall_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string rainfall = 1;</code>
+     * <code>string myrainfall = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getRainfallBytes() {
-      java.lang.Object ref = rainfall_;
+        getMyrainfallBytes() {
+      java.lang.Object ref = myrainfall_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        rainfall_ = b;
+        myrainfall_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string rainfall = 1;</code>
+     * <code>string myrainfall = 1;</code>
      */
-    public Builder setRainfall(
+    public Builder setMyrainfall(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      rainfall_ = value;
+      myrainfall_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string rainfall = 1;</code>
+     * <code>string myrainfall = 1;</code>
      */
-    public Builder clearRainfall() {
+    public Builder clearMyrainfall() {
       
-      rainfall_ = getDefaultInstance().getRainfall();
+      myrainfall_ = getDefaultInstance().getMyrainfall();
       onChanged();
       return this;
     }
     /**
-     * <code>string rainfall = 1;</code>
+     * <code>string myrainfall = 1;</code>
      */
-    public Builder setRainfallBytes(
+    public Builder setMyrainfallBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      rainfall_ = value;
+      myrainfall_ = value;
       onChanged();
       return this;
     }

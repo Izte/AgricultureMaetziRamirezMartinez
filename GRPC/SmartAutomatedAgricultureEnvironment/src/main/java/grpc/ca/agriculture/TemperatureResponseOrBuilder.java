@@ -8,12 +8,12 @@ public interface TemperatureResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string myTemperatureResponse = 1;</code>
+   * <code>string mytemperatureresponse = 1;</code>
    */
-  java.lang.String getMyTemperatureResponse();
+  java.lang.String getMytemperatureresponse();
   /**
-   * <code>string myTemperatureResponse = 1;</code>
+   * <code>string mytemperatureresponse = 1;</code>
    */
   com.google.protobuf.ByteString
-      getMyTemperatureResponseBytes();
+      getMytemperatureresponseBytes();
 }

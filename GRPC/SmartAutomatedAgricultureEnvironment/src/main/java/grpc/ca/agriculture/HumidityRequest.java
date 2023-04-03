@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HumidityRequest() {
-    humidity_ = "";
+    myhumidity_ = "";
   }
 
   @java.lang.Override
@@ -50,7 +50,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            humidity_ = s;
+            myhumidity_ = s;
             break;
           }
           default: {
@@ -85,34 +85,34 @@ private static final long serialVersionUID = 0L;
             grpc.ca.agriculture.HumidityRequest.class, grpc.ca.agriculture.HumidityRequest.Builder.class);
   }
 
-  public static final int HUMIDITY_FIELD_NUMBER = 1;
-  private volatile java.lang.Object humidity_;
+  public static final int MYHUMIDITY_FIELD_NUMBER = 1;
+  private volatile java.lang.Object myhumidity_;
   /**
-   * <code>string humidity = 1;</code>
+   * <code>string myhumidity = 1;</code>
    */
-  public java.lang.String getHumidity() {
-    java.lang.Object ref = humidity_;
+  public java.lang.String getMyhumidity() {
+    java.lang.Object ref = myhumidity_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      humidity_ = s;
+      myhumidity_ = s;
       return s;
     }
   }
   /**
-   * <code>string humidity = 1;</code>
+   * <code>string myhumidity = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getHumidityBytes() {
-    java.lang.Object ref = humidity_;
+      getMyhumidityBytes() {
+    java.lang.Object ref = myhumidity_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      humidity_ = b;
+      myhumidity_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -133,8 +133,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getHumidityBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, humidity_);
+    if (!getMyhumidityBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, myhumidity_);
     }
     unknownFields.writeTo(output);
   }
@@ -145,8 +145,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getHumidityBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, humidity_);
+    if (!getMyhumidityBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, myhumidity_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -164,8 +164,8 @@ private static final long serialVersionUID = 0L;
     grpc.ca.agriculture.HumidityRequest other = (grpc.ca.agriculture.HumidityRequest) obj;
 
     boolean result = true;
-    result = result && getHumidity()
-        .equals(other.getHumidity());
+    result = result && getMyhumidity()
+        .equals(other.getMyhumidity());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -177,8 +177,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + HUMIDITY_FIELD_NUMBER;
-    hash = (53 * hash) + getHumidity().hashCode();
+    hash = (37 * hash) + MYHUMIDITY_FIELD_NUMBER;
+    hash = (53 * hash) + getMyhumidity().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -316,7 +316,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      humidity_ = "";
+      myhumidity_ = "";
 
       return this;
     }
@@ -344,7 +344,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public grpc.ca.agriculture.HumidityRequest buildPartial() {
       grpc.ca.agriculture.HumidityRequest result = new grpc.ca.agriculture.HumidityRequest(this);
-      result.humidity_ = humidity_;
+      result.myhumidity_ = myhumidity_;
       onBuilt();
       return result;
     }
@@ -393,8 +393,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(grpc.ca.agriculture.HumidityRequest other) {
       if (other == grpc.ca.agriculture.HumidityRequest.getDefaultInstance()) return this;
-      if (!other.getHumidity().isEmpty()) {
-        humidity_ = other.humidity_;
+      if (!other.getMyhumidity().isEmpty()) {
+        myhumidity_ = other.myhumidity_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -426,71 +426,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object humidity_ = "";
+    private java.lang.Object myhumidity_ = "";
     /**
-     * <code>string humidity = 1;</code>
+     * <code>string myhumidity = 1;</code>
      */
-    public java.lang.String getHumidity() {
-      java.lang.Object ref = humidity_;
+    public java.lang.String getMyhumidity() {
+      java.lang.Object ref = myhumidity_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        humidity_ = s;
+        myhumidity_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string humidity = 1;</code>
+     * <code>string myhumidity = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getHumidityBytes() {
-      java.lang.Object ref = humidity_;
+        getMyhumidityBytes() {
+      java.lang.Object ref = myhumidity_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        humidity_ = b;
+        myhumidity_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string humidity = 1;</code>
+     * <code>string myhumidity = 1;</code>
      */
-    public Builder setHumidity(
+    public Builder setMyhumidity(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      humidity_ = value;
+      myhumidity_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string humidity = 1;</code>
+     * <code>string myhumidity = 1;</code>
      */
-    public Builder clearHumidity() {
+    public Builder clearMyhumidity() {
       
-      humidity_ = getDefaultInstance().getHumidity();
+      myhumidity_ = getDefaultInstance().getMyhumidity();
       onChanged();
       return this;
     }
     /**
-     * <code>string humidity = 1;</code>
+     * <code>string myhumidity = 1;</code>
      */
-    public Builder setHumidityBytes(
+    public Builder setMyhumidityBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      humidity_ = value;
+      myhumidity_ = value;
       onChanged();
       return this;
     }

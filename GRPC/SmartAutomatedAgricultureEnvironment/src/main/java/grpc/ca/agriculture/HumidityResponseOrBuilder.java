@@ -8,12 +8,12 @@ public interface HumidityResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string myHumidityResponse = 1;</code>
+   * <code>string myhumidityresponse = 1;</code>
    */
-  java.lang.String getMyHumidityResponse();
+  java.lang.String getMyhumidityresponse();
   /**
-   * <code>string myHumidityResponse = 1;</code>
+   * <code>string myhumidityresponse = 1;</code>
    */
   com.google.protobuf.ByteString
-      getMyHumidityResponseBytes();
+      getMyhumidityresponseBytes();
 }

@@ -8,12 +8,12 @@ public interface RainfallResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string myRainfallResponse = 1;</code>
+   * <code>string myrainfalrResponse = 1;</code>
    */
-  java.lang.String getMyRainfallResponse();
+  java.lang.String getMyrainfalrResponse();
   /**
-   * <code>string myRainfallResponse = 1;</code>
+   * <code>string myrainfalrResponse = 1;</code>
    */
   com.google.protobuf.ByteString
-      getMyRainfallResponseBytes();
+      getMyrainfalrResponseBytes();
 }

@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private RainfallResponse() {
-    myRainfallResponse_ = "";
+    myrainfalrResponse_ = "";
   }
 
   @java.lang.Override
@@ -46,7 +46,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            myRainfallResponse_ = s;
+            myrainfalrResponse_ = s;
             break;
           }
           default: {
@@ -81,34 +81,34 @@ private static final long serialVersionUID = 0L;
             grpc.ca.agriculture.RainfallResponse.class, grpc.ca.agriculture.RainfallResponse.Builder.class);
   }
 
-  public static final int MYRAINFALLRESPONSE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object myRainfallResponse_;
+  public static final int MYRAINFALRRESPONSE_FIELD_NUMBER = 1;
+  private volatile java.lang.Object myrainfalrResponse_;
   /**
-   * <code>string myRainfallResponse = 1;</code>
+   * <code>string myrainfalrResponse = 1;</code>
    */
-  public java.lang.String getMyRainfallResponse() {
-    java.lang.Object ref = myRainfallResponse_;
+  public java.lang.String getMyrainfalrResponse() {
+    java.lang.Object ref = myrainfalrResponse_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      myRainfallResponse_ = s;
+      myrainfalrResponse_ = s;
       return s;
     }
   }
   /**
-   * <code>string myRainfallResponse = 1;</code>
+   * <code>string myrainfalrResponse = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getMyRainfallResponseBytes() {
-    java.lang.Object ref = myRainfallResponse_;
+      getMyrainfalrResponseBytes() {
+    java.lang.Object ref = myrainfalrResponse_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      myRainfallResponse_ = b;
+      myrainfalrResponse_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -129,8 +129,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getMyRainfallResponseBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, myRainfallResponse_);
+    if (!getMyrainfalrResponseBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, myrainfalrResponse_);
     }
     unknownFields.writeTo(output);
   }
@@ -141,8 +141,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getMyRainfallResponseBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, myRainfallResponse_);
+    if (!getMyrainfalrResponseBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, myrainfalrResponse_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -160,8 +160,8 @@ private static final long serialVersionUID = 0L;
     grpc.ca.agriculture.RainfallResponse other = (grpc.ca.agriculture.RainfallResponse) obj;
 
     boolean result = true;
-    result = result && getMyRainfallResponse()
-        .equals(other.getMyRainfallResponse());
+    result = result && getMyrainfalrResponse()
+        .equals(other.getMyrainfalrResponse());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -173,8 +173,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MYRAINFALLRESPONSE_FIELD_NUMBER;
-    hash = (53 * hash) + getMyRainfallResponse().hashCode();
+    hash = (37 * hash) + MYRAINFALRRESPONSE_FIELD_NUMBER;
+    hash = (53 * hash) + getMyrainfalrResponse().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -308,7 +308,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      myRainfallResponse_ = "";
+      myrainfalrResponse_ = "";
 
       return this;
     }
@@ -336,7 +336,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public grpc.ca.agriculture.RainfallResponse buildPartial() {
       grpc.ca.agriculture.RainfallResponse result = new grpc.ca.agriculture.RainfallResponse(this);
-      result.myRainfallResponse_ = myRainfallResponse_;
+      result.myrainfalrResponse_ = myrainfalrResponse_;
       onBuilt();
       return result;
     }
@@ -385,8 +385,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(grpc.ca.agriculture.RainfallResponse other) {
       if (other == grpc.ca.agriculture.RainfallResponse.getDefaultInstance()) return this;
-      if (!other.getMyRainfallResponse().isEmpty()) {
-        myRainfallResponse_ = other.myRainfallResponse_;
+      if (!other.getMyrainfalrResponse().isEmpty()) {
+        myrainfalrResponse_ = other.myrainfalrResponse_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -418,71 +418,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object myRainfallResponse_ = "";
+    private java.lang.Object myrainfalrResponse_ = "";
     /**
-     * <code>string myRainfallResponse = 1;</code>
+     * <code>string myrainfalrResponse = 1;</code>
      */
-    public java.lang.String getMyRainfallResponse() {
-      java.lang.Object ref = myRainfallResponse_;
+    public java.lang.String getMyrainfalrResponse() {
+      java.lang.Object ref = myrainfalrResponse_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        myRainfallResponse_ = s;
+        myrainfalrResponse_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string myRainfallResponse = 1;</code>
+     * <code>string myrainfalrResponse = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getMyRainfallResponseBytes() {
-      java.lang.Object ref = myRainfallResponse_;
+        getMyrainfalrResponseBytes() {
+      java.lang.Object ref = myrainfalrResponse_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        myRainfallResponse_ = b;
+        myrainfalrResponse_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string myRainfallResponse = 1;</code>
+     * <code>string myrainfalrResponse = 1;</code>
      */
-    public Builder setMyRainfallResponse(
+    public Builder setMyrainfalrResponse(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      myRainfallResponse_ = value;
+      myrainfalrResponse_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string myRainfallResponse = 1;</code>
+     * <code>string myrainfalrResponse = 1;</code>
      */
-    public Builder clearMyRainfallResponse() {
+    public Builder clearMyrainfalrResponse() {
       
-      myRainfallResponse_ = getDefaultInstance().getMyRainfallResponse();
+      myrainfalrResponse_ = getDefaultInstance().getMyrainfalrResponse();
       onChanged();
       return this;
     }
     /**
-     * <code>string myRainfallResponse = 1;</code>
+     * <code>string myrainfalrResponse = 1;</code>
      */
-    public Builder setMyRainfallResponseBytes(
+    public Builder setMyrainfalrResponseBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      myRainfallResponse_ = value;
+      myrainfalrResponse_ = value;
       onChanged();
       return this;
     }

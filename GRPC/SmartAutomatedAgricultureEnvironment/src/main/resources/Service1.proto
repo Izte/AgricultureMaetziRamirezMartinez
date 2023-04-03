@@ -16,27 +16,27 @@ service climateService{
 
 // Define the messages for GetTemperature method
 message TemperatureRequest{
-	string temperature = 1;
+	string mytemperature = 1;
 }
 
 message TemperatureResponse{
-	string myTemperatureResponse = 1;
+	string mytemperatureresponse = 1;
 }
 
 // Define the messages for GetHumidity method
 message HumidityRequest{
-	string humidity = 1;
+	string myhumidity = 1;
 }
 
 message HumidityResponse{
-	string myHumidityResponse = 1;
+	string myhumidityresponse = 1;
 }
 
 // Define the messages for GetRain method
 message RainfallRequest{
-	string rainfall = 1;
+	string myrainfall = 1;
 }
 
 message RainfallResponse{
-	string myRainfallResponse = 1;
+	string myrainfalrResponse = 1;
 }

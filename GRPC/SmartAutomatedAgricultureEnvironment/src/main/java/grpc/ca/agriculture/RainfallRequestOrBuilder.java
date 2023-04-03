@@ -8,12 +8,12 @@ public interface RainfallRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string rainfall = 1;</code>
+   * <code>string myrainfall = 1;</code>
    */
-  java.lang.String getRainfall();
+  java.lang.String getMyrainfall();
   /**
-   * <code>string rainfall = 1;</code>
+   * <code>string myrainfall = 1;</code>
    */
   com.google.protobuf.ByteString
-      getRainfallBytes();
+      getMyrainfallBytes();
 }
