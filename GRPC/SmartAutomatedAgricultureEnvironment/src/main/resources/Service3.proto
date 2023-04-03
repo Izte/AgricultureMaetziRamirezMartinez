@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+// Options for the GRPC
+option java_multiple_files = true;
+option java_package = "grpc.ca.agriculture";
+option java_outer_classname = "CropService";
+
+package smartAgriculture;
+
+// Service Definition
+service cropService{
+	rpc GetCropStatus (stream CropTypeRequest) returns (CropStatusResponse){}
+	rpc GetCropPlan (CropPlanRequest) returns (stream CropPlanResponse){}
+}
+
+// Define the messages for GetCropStatus method
+message CropTypeRequest{
+	string mycroptype = 1;
+}
+
+message CropStatusResponse{
+	string mycropstatus = 1;
+}
+
+// Define the messages for GetCropPlan method
+message CropPlanRequest{
+	string mycroptype = 1;
+}
+
+message CropPlanResponse{
+	string cropPlan = 1;
+}
