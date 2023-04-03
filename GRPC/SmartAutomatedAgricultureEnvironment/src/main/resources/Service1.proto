@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+// Options for the GRPC
+option java_multiple_files = true;
+option java_package = "grpc.ca.agriculture";
+option java_outer_classname = "ClimateService";
+
+package smartAgriculture;
+
+// Service Definition
+service climateService{
+	rpc GetTemperature (TemperatureRequest) returns (TemperatureResponse){}
+	rpc GetHumidity (HumidityRequest) returns (HumidityResponse){}
+	rpc GetRain (RainfallRequest) returns (RainfallResponse){}
+}
+
+// Define the messages for GetTemperature method
+message TemperatureRequest{
+	string temperature = 1;
+}
+
+message TemperatureResponse{
+	string myTemperatureResponse = 1;
+}
+
+// Define the messages for GetHumidity method
+message HumidityRequest{
+	string humidity = 1;
+}
+
+message HumidityResponse{
+	string myHumidityResponse = 1;
+}
+
+// Define the messages for GetRain method
+message RainfallRequest{
+	string rainfall = 1;
+}
+
+message RainfallResponse{
+	string myRainfallResponse = 1;
+}
