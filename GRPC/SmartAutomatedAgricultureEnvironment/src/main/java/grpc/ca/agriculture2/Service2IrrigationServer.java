@@ -21,6 +21,8 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 		} catch(IOException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			
+			//hola
 		}
 	}
 
