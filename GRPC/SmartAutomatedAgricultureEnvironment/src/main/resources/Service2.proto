@@ -2,7 +2,7 @@ syntax = "proto3";
 
 // Options for the GRPC
 option java_multiple_files = true;
-option java_package = "grpc.ca.agriculture";
+option java_package = "grpc.ca.agriculture2";
 option java_outer_classname = "IrrigationService";
 
 package smartAgriculture;

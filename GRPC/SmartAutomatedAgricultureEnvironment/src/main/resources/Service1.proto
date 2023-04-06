@@ -2,7 +2,7 @@ syntax = "proto3";
 
 // Options for the GRPC
 option java_multiple_files = true;
-option java_package = "grpc.ca.agriculture";
+option java_package = "grpc.ca.agriculture1";
 option java_outer_classname = "ClimateService";
 
 package smartAgriculture;
@@ -16,11 +16,11 @@ service climateService{
 
 // Define the messages for GetTemperature method
 message TemperatureRequest{
-	string mytemperature = 1;
+	string mytemperature = 1; // Users can make a request for this method without any parameters,
 }
 
 message TemperatureResponse{
-	string mytemperatureresponse = 1;
+	string mytemperatureresponse = 1; // The response is a string with floating-point value that represents the current temperature of the environment
 }
 
 // Define the messages for GetHumidity method
@@ -29,14 +29,16 @@ message HumidityRequest{
 }
 
 message HumidityResponse{
-	string myhumidityresponse = 1;
+	string myhumidityresponse = 1; // the response is a floating-point value that represents the current humidity level of the environment as a percentage
 }
 
 // Define the messages for GetRain method
 message RainfallRequest{
-	string myrainfall = 1;
+	//The method requires the user to provide two parameters: the start date and end date of the period they want to query.
+	string mystartdate = 1;
+	string myenddate = 2;
 }
 
 message RainfallResponse{
-	string myrainfalrResponse = 1;
+	string myrainfalrResponse = 1; // The response to this method is a floating-point value that represents the total rainfall over the specified time period
 }
