@@ -21,8 +21,7 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 		} catch(IOException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
-			//hola
+	
 		}
 	}
 
@@ -47,9 +46,11 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 		
 		System.out.println("--Receiving Location Parameters Request from Client--");
 		
-		CurrentStatusResponse replay = CurrentStatusResponse.newBuilder().setMycurrentstatusResponse("The current status is " + request.getLatitude() + request.getLongitude()).build();
+		for(int i=0; i < 5; i++) {
+			CurrentStatusResponse replay = CurrentStatusResponse.newBuilder().setMycurrentstatusResponse("The current status is " + request.getLatitude() + request.getLongitude()).build();
 		
-		responseObserver.onNext(replay);
+			responseObserver.onNext(replay);
+		}
 		responseObserver.onCompleted();
 	}
 
@@ -63,9 +64,9 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 				System.out.println("Receiving Cancelation Request: ");
 				
 				// extract the cancellation string from the request
-				//String cancelationString = request.getCancelationString();
+				//String cancelationString = request.getMycancelationrequest();
 				
-				CancelationResponse replay = CancelationResponse.newBuilder().setMycancelationresponse(request.getCancelationString()).build();
+				CancelationResponse replay = CancelationResponse.newBuilder().setMycancelationresponse(request.getMycancelationrequest()).build();
 			
 				// cancel the irrigation process using the cancellation string
 	            // and handle any errors that may occur
@@ -91,7 +92,6 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 	            // send an empty response back to the client to confirm cancellation
 	            //responseObserver.onNext(CancelationResponse.getDefaultInstance());
 	            responseObserver.onNext(replay);
-	            responseObserver.onCompleted();
 			}
 
 			@Override
@@ -104,8 +104,26 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 			public void onCompleted() {
 				// TODO Auto-generated method stub
 	            System.out.println("Client has completed the request.");
-
+	            responseObserver.onCompleted();
 			}
 		};
 	}
+	/*
+	private void cancelIrrigationProcess(String cancellationString) throws IrrigationProcessNotFoundException, IrrigationProcessAlreadyCancelledException {
+	    // search for the irrigation process using the cancellation string
+	    IrrigationProcess process = findIrrigationProcessByCancellationString(cancellationString);
+
+	    // if the process was not found, throw an exception
+	    if (process == null) {
+	        throw new IrrigationProcessNotFoundException("Irrigation process not found for cancellation string: " + cancellationString);
+	    }
+
+	    // if the process was already cancelled, throw an exception
+	    if (process.isCancelled()) {
+	        throw new IrrigationProcessAlreadyCancelledException("Irrigation process already cancelled for cancellation string: " + cancellationString);
+	    }
+
+	    // cancel the process
+	    process.cancel();
+	}*/
 }

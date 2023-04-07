@@ -60,19 +60,19 @@ public final class IrrigationService {
       "\t\"@\n\031LocationParametersRequest\022\020\n\010latitu" +
       "de\030\001 \001(\002\022\021\n\tlongitude\030\002 \001(\002\"8\n\025CurrentSt" +
       "atusResponse\022\037\n\027mycurrentstatusResponse\030" +
-      "\001 \001(\t\" \n\022CancelationRequest\022\n\n\002id\030\001 \001(\005\"" +
-      "4\n\023CancelationResponse\022\035\n\025mycancelationr" +
-      "esponse\030\001 \001(\t2\324\002\n\021irrigationService\022l\n\rS" +
-      "etIrrigation\022-.smartAgriculture.Irrigati" +
-      "onParametersRequest\032*.smartAgriculture.I" +
-      "rrigationStatusResponse\"\000\022j\n\016GetIrrigSta" +
-      "tus\022+.smartAgriculture.LocationParameter" +
-      "sRequest\032\'.smartAgriculture.CurrentStatu" +
-      "sResponse\"\0000\001\022e\n\020CancelIrrigation\022$.smar" +
-      "tAgriculture.CancelationRequest\032%.smartA" +
-      "griculture.CancelationResponse\"\000(\0010\001B+\n\024" +
-      "grpc.ca.agriculture2B\021IrrigationServiceP" +
-      "\001b\006proto3"
+      "\001 \001(\t\"2\n\022CancelationRequest\022\034\n\024mycancela" +
+      "tionrequest\030\001 \001(\t\"4\n\023CancelationResponse" +
+      "\022\035\n\025mycancelationresponse\030\001 \001(\t2\324\002\n\021irri" +
+      "gationService\022l\n\rSetIrrigation\022-.smartAg" +
+      "riculture.IrrigationParametersRequest\032*." +
+      "smartAgriculture.IrrigationStatusRespons" +
+      "e\"\000\022j\n\016GetIrrigStatus\022+.smartAgriculture" +
+      ".LocationParametersRequest\032\'.smartAgricu" +
+      "lture.CurrentStatusResponse\"\0000\001\022e\n\020Cance" +
+      "lIrrigation\022$.smartAgriculture.Cancelati" +
+      "onRequest\032%.smartAgriculture.Cancelation" +
+      "Response\"\000(\0010\001B+\n\024grpc.ca.agriculture2B\021" +
+      "IrrigationServiceP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -115,7 +115,7 @@ public final class IrrigationService {
     internal_static_smartAgriculture_CancelationRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartAgriculture_CancelationRequest_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { "Mycancelationrequest", });
     internal_static_smartAgriculture_CancelationResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_smartAgriculture_CancelationResponse_fieldAccessorTable = new

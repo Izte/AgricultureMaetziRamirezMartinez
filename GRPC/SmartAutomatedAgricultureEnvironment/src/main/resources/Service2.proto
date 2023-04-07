@@ -35,7 +35,7 @@ message CurrentStatusResponse{
 
 // Define the messages for CancelIrrigation method
 message CancelationRequest{
-	int32 id = 1;
+	string mycancelationrequest = 1;
 }
 
 message CancelationResponse{

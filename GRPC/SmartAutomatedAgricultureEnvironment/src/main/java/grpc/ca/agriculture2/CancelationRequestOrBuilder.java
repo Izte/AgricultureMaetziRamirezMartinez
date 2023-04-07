@@ -8,7 +8,12 @@ public interface CancelationRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 id = 1;</code>
+   * <code>string mycancelationrequest = 1;</code>
    */
-  int getId();
+  java.lang.String getMycancelationrequest();
+  /**
+   * <code>string mycancelationrequest = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getMycancelationrequestBytes();
 }
