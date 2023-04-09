@@ -5,7 +5,6 @@ import grpc.ca.agriculture3.cropServiceGrpc.cropServiceStub;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
-import io.grpc.stub.StreamObservers;
 
 
 public class Service3CropClient {
@@ -20,11 +19,16 @@ public class Service3CropClient {
 		ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
 		
 		blockingstub = cropServiceGrpc.newBlockingStub(channel);
+		asyncStub = cropServiceGrpc.newStub(channel);
+		
+		GetCropStatus();
+		
+		GetCropPlan();
+		
 	}
 	
 	public static void GetCropStatus() {
 		//create the request stream
-		CropTypeRequest requestCT = CropTypeRequest.newBuilder().setMycroptype("Healty").build();
 		
 		StreamObserver<CropStatusResponse> replyCS = new StreamObserver<CropStatusResponse>() {
 
@@ -47,11 +51,61 @@ public class Service3CropClient {
 			}
 			
 		};
-		//asyncStub.getCropStatus(requestCT, replyCS);
 		
-		asyncStub.getCropStatus(replyCS);
-		asyncStub.getCropPlan(null, null);
+		StreamObserver<CropTypeRequest> requestCT = asyncStub.getCropStatus(replyCS);
+		try {
+			requestCT.onNext(CropTypeRequest.newBuilder().setMycroptype("Corn").build());
+			Thread.sleep(500);
 			
+			requestCT.onNext(CropTypeRequest.newBuilder().setMycroptype("Potato").build());
+			Thread.sleep(500);
+			
+			requestCT.onNext(CropTypeRequest.newBuilder().setMycroptype("Squash").build());
+			Thread.sleep(500);
+			
+			// Mark the end of request
+			requestCT.onCompleted();
+			
+			Thread.sleep(10000);
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+			
+	}
+	
+	public static void GetCropPlan() {
+		
+		CropPlanRequest requestCPR = CropPlanRequest.newBuilder().setMycroptype("Healthy").build();
+		StreamObserver<CropPlanResponse> responseObserver = new StreamObserver<CropPlanResponse>() {
+
+			@Override
+			public void onNext(CropPlanResponse value) {
+				// TODO Auto-generated method stub
+				System.out.println("Message send by the server: " + value.getCropPlan());
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				// TODO Auto-generated method stub
+				t.printStackTrace();
+			}
+
+			@Override
+			public void onCompleted() {
+				// TODO Auto-generated method stub
+				System.out.println("Crop Plan");
+			}	
+		};
+		asyncStub.getCropPlan(requestCPR, responseObserver);
+		
+		try {
+			Thread.sleep(15000);
+		} catch(InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
+}
 

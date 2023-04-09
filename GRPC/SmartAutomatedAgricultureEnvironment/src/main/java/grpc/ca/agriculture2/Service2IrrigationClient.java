@@ -10,23 +10,31 @@ import io.grpc.stub.StreamObserver;
 public class Service2IrrigationClient {
 	private static irrigationServiceBlockingStub blockingstub;
 	private static irrigationServiceStub asyncStub;
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) throws InterruptedException {
 		String host = "localhost";
 		int port = 50052;
 		
 		ManagedChannel channel = ManagedChannelBuilder.forAddress(host, port).usePlaintext().build();
 		
 		blockingstub = irrigationServiceGrpc.newBlockingStub(channel);
+		asyncStub = irrigationServiceGrpc.newStub(channel);
+		
+		SetIrrigation();
+		
+		GetIrrigStatus();
+		
+		CancelIrrigation();
 		
 	}
 	
 	public static void SetIrrigation() {
 		// Method SetIrrigation
-		IrrigationParametersRequest requestIP = IrrigationParametersRequest.newBuilder().setMyirrigationparameters("The irrigation parameter are between 10 to 15 ").build();
+		IrrigationParametersRequest requestIP = IrrigationParametersRequest.newBuilder().setMyirrigationparameters(" between 10 to 15 ").build();
 		
 		IrrigationStatusResponse replyIS = blockingstub.setIrrigation(requestIP);
 		
-		System.out.println("Message send by the server " + replyIS.getMyirrigationstatusResponse());
+		System.out.println("Message send by the server: " + replyIS.getMyirrigationstatusResponse());
 	}
 	
 	public static void GetIrrigStatus() {

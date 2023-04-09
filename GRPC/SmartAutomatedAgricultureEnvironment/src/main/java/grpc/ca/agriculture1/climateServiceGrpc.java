@@ -291,16 +291,6 @@ public final class climateServiceGrpc {
       return blockingUnaryCall(
           getChannel(), getGetRainMethod(), getCallOptions(), request);
     }
-
-	public HumidityResponse getMyhumidityresponse(HumidityRequest requestHR) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public HumidityResponse getMyhumidty(HumidityRequest requestHR) {
-		// TODO Auto-generated method stub
-		return null;
-	}
   }
 
   /**

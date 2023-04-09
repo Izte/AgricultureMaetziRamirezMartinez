@@ -32,7 +32,7 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 		//super.setIrrigation(request, responseObserver);
 		System.out.println("--Receiving Irrigation Parameters from Client--");
 		
-		IrrigationStatusResponse replay = IrrigationStatusResponse.newBuilder().setMyirrigationstatusResponse("The irrigation parameters is " + request.getMyirrigationparameters()).build();
+		IrrigationStatusResponse replay = IrrigationStatusResponse.newBuilder().setMyirrigationstatusResponse("The irrigation parameters are " + request.getMyirrigationparameters()).build();
 		
 		responseObserver.onNext(replay);
 		responseObserver.onCompleted();
