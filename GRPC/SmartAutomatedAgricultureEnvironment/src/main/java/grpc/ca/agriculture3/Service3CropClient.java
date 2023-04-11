@@ -22,8 +22,10 @@ public class Service3CropClient {
 		asyncStub = cropServiceGrpc.newStub(channel);
 		
 		GetCropStatus();
+		System.out.println("--------------------------------------------------------------------");
 		
 		GetCropPlan();
+		System.out.println("--------------------------------------------------------------------");
 		
 	}
 	

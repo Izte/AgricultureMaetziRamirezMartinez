@@ -23,6 +23,7 @@ public class Service1ClimateClient {
 			TemperatureResponse reply = blockingstub.getTemperature(request);
 		
 			System.out.println("Message send by the server " + reply.getMytemperatureresponse());
+			System.out.println("--------------------------------------------------------------------");
 			
 			//method getHumidity
 			HumidityRequest requestHR = HumidityRequest.newBuilder().setMyhumidity("The humidity is 60% ").build();
@@ -30,6 +31,7 @@ public class Service1ClimateClient {
 			HumidityResponse replyHR = blockingstub.getHumidity(requestHR);
 		
 			System.out.println("Message send by the server " + replyHR.getMyhumidityresponse());
+			System.out.println("--------------------------------------------------------------------");
 			
 			//method GetRain
 			RainfallRequest requestRR = RainfallRequest.newBuilder().setMystartdate("The start date is 12th April 2023 ").setMyenddate("The end date is 14th April 2023 ").build();
@@ -37,6 +39,8 @@ public class Service1ClimateClient {
 			RainfallResponse replyRR = blockingstub.getRain(requestRR);
 		
 			System.out.println("Message send by the server " + replyRR.getMyrainfalrResponse());
+			System.out.println("--------------------------------------------------------------------");
+			
 		}catch(StatusRuntimeException e) {
 			e.getStatus();
 		} finally {

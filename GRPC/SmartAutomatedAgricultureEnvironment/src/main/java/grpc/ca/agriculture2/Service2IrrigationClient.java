@@ -21,11 +21,13 @@ public class Service2IrrigationClient {
 		asyncStub = irrigationServiceGrpc.newStub(channel);
 		
 		SetIrrigation();
+		System.out.println("--------------------------------------------------------------------");
 		
 		GetIrrigStatus();
+		System.out.println("--------------------------------------------------------------------");
 		
 		CancelIrrigation();
-		
+		System.out.println("--------------------------------------------------------------------");
 	}
 	
 	public static void SetIrrigation() {
