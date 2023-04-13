@@ -138,7 +138,7 @@ public class Service1ClimateServer extends climateServiceImplBase{
 		
 		System.out.println("--Receiving Rainfall Request from Client--");
 		
-		RainfallResponse reply = RainfallResponse.newBuilder().setMyrainfalrResponse("The rainfall is: " + request.getMystartdate() + request.getMyenddate()).build();
+		RainfallResponse reply = RainfallResponse.newBuilder().setMyrainfalrResponse("The rainfall: " + request.getMystartdate() + request.getMyenddate()).build();
 		
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
