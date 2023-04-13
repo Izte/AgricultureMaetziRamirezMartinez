@@ -113,7 +113,7 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 		System.out.println("--Receiving Location Parameters Request from Client--");
 		
 		for(int i=0; i < 5; i++) {
-			CurrentStatusResponse replay = CurrentStatusResponse.newBuilder().setMycurrentstatusResponse("The current status is " + request.getLatitude() + request.getLongitude()).build();
+			CurrentStatusResponse replay = CurrentStatusResponse.newBuilder().setMycurrentstatusResponse("Current Latitude and Lonitude " + request.getLatitude() + request.getLongitude()).build();
 		
 			responseObserver.onNext(replay);
 		}
@@ -128,10 +128,7 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 			@Override
 			public void onNext(CancelationRequest request) {
 				System.out.println("Receiving Cancelation Request: ");
-				
-				// extract the cancellation string from the request
-				//String cancelationString = request.getMycancelationrequest();
-				
+								
 				CancelationResponse replay = CancelationResponse.newBuilder().setMycancelationresponse(request.getMycancelationrequest()).build();
 			
 				// cancel the irrigation process using the cancellation string

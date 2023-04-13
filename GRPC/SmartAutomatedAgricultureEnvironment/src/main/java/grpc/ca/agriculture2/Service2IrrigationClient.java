@@ -10,7 +10,7 @@ import io.grpc.stub.StreamObserver;
 public class Service2IrrigationClient {
 	private static irrigationServiceBlockingStub blockingstub;
 	private static irrigationServiceStub asyncStub;
-	
+		
 	public static void main(String[] args) throws InterruptedException {
 		String host = "localhost";
 		int port = 50052;

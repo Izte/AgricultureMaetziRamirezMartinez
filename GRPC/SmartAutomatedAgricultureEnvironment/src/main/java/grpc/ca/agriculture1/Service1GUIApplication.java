@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.jmdns.ServiceInfo;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -18,11 +17,6 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 
 public class Service1GUIApplication {
-	
-	private static climateServiceBlockingStub blockingStub;
-	private static climateServiceStub asyncStub;
-
-	private ServiceInfo mathServiceInfo;
 	
 	public static void main(String[] args) {
 		JFrame  frame = new JFrame ("Climate Service");
