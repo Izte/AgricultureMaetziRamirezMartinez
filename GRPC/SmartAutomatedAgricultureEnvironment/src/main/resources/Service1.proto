@@ -42,3 +42,5 @@ message RainfallRequest{
 message RainfallResponse{
 	string myrainfalrResponse = 1; // The response to this method is a floating-point value that represents the total rainfall over the specified time period
 }
+
+

@@ -1,6 +1,13 @@
 package grpc.ca.agriculture2;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.InetAddress;
+import java.util.Properties;
+
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceInfo;
 
 import grpc.ca.agriculture2.irrigationServiceGrpc.irrigationServiceImplBase;
 import io.grpc.Server;
@@ -10,7 +17,12 @@ import io.grpc.stub.StreamObserver;
 public class Service2IrrigationServer extends irrigationServiceImplBase{
 	public static void main(String[] args) {
 		Service2IrrigationServer irrigationserver = new Service2IrrigationServer();
-		int port = 50052;
+		
+		//Registration
+		Properties prop = irrigationserver.getProperties();
+		irrigationserver.registerService(prop);
+		
+		int port = Integer.valueOf(prop.getProperty("service_port"));//#.50052;
 		
 		Server server;
 		try {
@@ -22,6 +34,60 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 	
+		}
+	}
+	
+	private Properties getProperties() {
+		
+		Properties prop = null;
+		
+		try (InputStream input = new FileInputStream("src/main/resources/Service2.properties")){
+			prop = new Properties();
+			
+			//load a properties file
+			prop.load(input);
+			
+			//get the property value and print it out
+			System.out.println("Service 2 Irrigation properties: ");
+			System.out.println("\t service_type: " + prop.getProperty("service_type"));
+            System.out.println("\t service_name: " +prop.getProperty("service_name"));
+            System.out.println("\t service_description: " +prop.getProperty("service_description"));
+	        System.out.println("\t service_port: " +prop.getProperty("service_port"));
+
+		} catch(IOException ex) {
+			ex.printStackTrace();
+		}
+		return prop;
+	}
+
+	private void registerService(Properties prop) {
+		try {
+			// Create a JmDNS instance
+			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+			
+			String service_type = prop.getProperty("service_type");//"_http._tcp.local.";
+			String service_name = prop.getProperty("service_name")  ;// "service2";
+			int service_port = Integer.valueOf( prop.getProperty("service_port") );// #.50052;
+			
+			String service_description_properties = prop.getProperty("service_description");//"path=index.html";
+		
+			//Register a service
+			ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
+            jmdns.registerService(serviceInfo);
+            
+            System.out.printf("registrering service with type %s and name %s \n", service_type, service_name);
+            
+            // Wait a bit
+            Thread.sleep(1000);
+
+            // Unregister all services
+            //jmdns.unregisterAllServices();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
