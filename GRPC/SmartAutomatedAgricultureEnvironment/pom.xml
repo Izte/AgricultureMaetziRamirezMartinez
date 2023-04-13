@@ -54,7 +54,7 @@
 	<build>
 		<defaultGoal>clean generate-sources compile install</defaultGoal>
 		<plugins>
-			<!--   compile proto file into java files.   -->
+			<!-- compile proto file into java files. -->
 			<plugin>
 				<groupId>com.github.os72</groupId>
 				<artifactId>protoc-jar-maven-plugin</artifactId>
@@ -97,4 +97,3 @@
 		</plugins>
 	</build>
 </project>
-
