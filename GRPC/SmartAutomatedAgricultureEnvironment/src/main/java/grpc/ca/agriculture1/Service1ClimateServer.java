@@ -6,7 +6,9 @@ import java.net.InetAddress;
 import java.util.Properties;
 
 import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
 
 import grpc.ca.agriculture1.climateServiceGrpc.climateServiceImplBase;
 import io.grpc.Server;
@@ -105,6 +107,25 @@ public class Service1ClimateServer extends climateServiceImplBase{
 		    }
 		}).start();*/
 	}
+	/*
+	// Discovery service
+	public static class Listener implements ServiceListener{
+
+		@Override
+	    public void serviceAdded(ServiceEvent event) {
+	    	System.out.println("Service added: " + event.getInfo());
+	    }
+
+	    @Override
+	    public void serviceRemoved(ServiceEvent event) {
+	    	System.out.println("Service removed: " + event.getInfo());
+	    }
+
+	   	@Override
+	    public void serviceResolved(ServiceEvent event) {
+	    	System.out.println("Service resolved: " + event.getInfo());
+	    }
+	}*/
 
 	@Override
 	public void getTemperature(TemperatureRequest request, StreamObserver<TemperatureResponse> responseObserver) {
