@@ -65,8 +65,8 @@ public class Service1ClimateServer extends climateServiceImplBase {
 
 	        // Add a listener for service events
 	        Listener listener = new Listener();
-	        jmdns.addServiceListener("_service1_tcp.local.", listener);
-	        System.out.println("Discovered _service1_tcp.local.");
+	        jmdns.addServiceListener("_service1._tcp.local.", listener);
+	        System.out.println("Discovery _service1._tcp.local.");
 	        
 	        // Wait for services to be discovered
 	        Thread.sleep(5000);
@@ -116,7 +116,7 @@ public class Service1ClimateServer extends climateServiceImplBase {
 			// Create a JmDNS instance
 			JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
 
-			String service_type = prop.getProperty("service_type");// "_http._tcp.local.";
+			String service_type = prop.getProperty("service_type");// "_service1._tcp.local.";
 			String service_name = prop.getProperty("service_name");// "service1";
 			int service_port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
 
