@@ -7,14 +7,26 @@ import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
 
+import org.apache.log4j.PropertyConfigurator;
+
+import grpc.ca.agriculture1.Service1ClimateServer.Listener;
+import grpc.ca.agriculture1.Service1ClimateServer.LoggingInterceptor;
 import grpc.ca.agriculture3.cropServiceGrpc.cropServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.Interceptor.Chain;
 
 public class Service3CropServer extends cropServiceImplBase{
 	public static void main(String[] args) {
@@ -24,9 +36,32 @@ public class Service3CropServer extends cropServiceImplBase{
 		Properties prop = cropserver.getProperties();
 		cropserver.registerService(prop);
 		
+		// Initialize Log4j
+        PropertyConfigurator.configure("src/main/resources/Service1.properties");
+		
 		int port = Integer.valueOf(prop.getProperty("service_port"));//#.50054;
 		
 		Server server;
+		
+		try {
+	        // Create a JmDNS instance for service discovery
+	        JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+
+	        // Add a listener for service events
+	        Listener listener = new Listener();
+	        jmdns.addServiceListener("_service1_tcp.local.", listener);
+	        System.out.println("Discovered _service3_tcp.local.");
+	        
+	        // Wait for services to be discovered
+	        Thread.sleep(5000);
+
+	        // Close the JmDNS instance
+	        jmdns.close();
+	    } catch (IOException | InterruptedException e) {
+	        e.printStackTrace();
+	        System.exit(1);
+	    }
+		
 		try {
 			server = ServerBuilder.forPort(port).addService(cropserver).build().start();
 			System.out.println("Server 3 for Crop Service is running...");
@@ -35,16 +70,18 @@ public class Service3CropServer extends cropServiceImplBase{
 		} catch(IOException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			//System.out.println("Error starting gRPC server", e);
+			System.exit(1);
 	
 		}
 	}
 	
 	private Properties getProperties() {
 		
-		Properties prop = null;
+		Properties prop = new Properties();
 		
 		try (InputStream input = new FileInputStream("src/main/resources/Service3.properties")){
-			prop = new Properties();
+			//prop = new Properties();
 			
 			//load a properties file
 			prop.load(input);
@@ -58,6 +95,7 @@ public class Service3CropServer extends cropServiceImplBase{
 
 		} catch(IOException ex) {
 			ex.printStackTrace();
+			System.exit(1);
 		}
 		return prop;
 	}
@@ -90,8 +128,56 @@ public class Service3CropServer extends cropServiceImplBase{
         } catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.exit(1);
 		}
 	}
+	
+	// Discovery service
+	public static class Listener implements ServiceListener {
+
+		@Override
+		public void serviceAdded(ServiceEvent event) {
+			System.out.println("Service added: " + event.getInfo());
+		}
+
+		@Override
+		public void serviceRemoved(ServiceEvent event) {
+			System.out.println("Service removed: " + event.getInfo());
+		}
+
+		@Override
+		public void serviceResolved(ServiceEvent event) {
+			System.out.println("Service resolved: " + event.getInfo());
+		}
+	}
+	
+	//private OkHttpClient client;
+	
+	public class LoggingInterceptor implements Interceptor {
+	    /*
+		// create the OkHttpClient with the logging
+		LoggingInterceptor loggingInterceptor = new LoggingInterceptor();
+        client = new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
+		*/
+	    private final Logger logger = Logger.getLogger(LoggingInterceptor.class.getName());
+
+	    @Override public Response intercept(Chain chain) throws IOException {
+	        Request request = chain.request();
+
+	        long t1 = System.nanoTime();
+	        logger.log(Level.INFO, String.format("Sending request %s on %s%n%s",
+	              request.url(), chain.connection(), request.headers()));
+
+	        Response response = chain.proceed(request);
+
+	        long t2 = System.nanoTime();
+	        logger.log(Level.INFO, String.format("Received response for %s in %.1fms%n%s",
+	              response.request().url(), (t2 - t1) / 1e6d, response.headers()));
+
+	        return response;
+	    }
+	}
+
 
 	@Override
 	public StreamObserver<CropTypeRequest> getCropStatus(StreamObserver<CropStatusResponse> responseObserver) {
