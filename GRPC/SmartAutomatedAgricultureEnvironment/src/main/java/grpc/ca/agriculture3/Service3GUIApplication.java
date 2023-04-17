@@ -4,10 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
+import javax.jmdns.JmDNS;
+import javax.jmdns.ServiceEvent;
+import javax.jmdns.ServiceInfo;
+import javax.jmdns.ServiceListener;
 import javax.swing.JButton;
 
 import grpc.ca.agriculture3.cropServiceGrpc.cropServiceBlockingStub;
@@ -50,6 +57,8 @@ public class Service3GUIApplication {
 		frame.pack();
 		frame.setVisible(true);
 		frame.setSize(640,480);
+		
+		discoveryService3Crop("_service3._tcp.local.");
 		
 		cropStatusButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -141,5 +150,53 @@ public class Service3GUIApplication {
 		});
 		
 	}
+	
+	private static void discoveryService3Crop(String service_type) {
+
+        try {
+            // Create a JmDNS instance
+            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+            jmdns.addServiceListener(service_type, new ServiceListener() {
+                @Override
+                public void serviceResolved(ServiceEvent event) {
+                    System.out.println("Crop Service resolved: " + event.getInfo());
+
+                    ServiceInfo climateInfo = event.getInfo();
+
+                    int port = climateInfo.getPort();
+
+                    System.out.println("\n resolving " + service_type + " with the following properties: ");
+                    System.out.println("\n service_type:" + event.getType());
+                    System.out.println("\n service_name: " + event.getName());
+                    System.out.println("\n service_description: " + climateInfo.getNiceTextString());
+                    System.out.println("\n service_port: " + port);                                       
+                    System.out.println("\n host: " + climateInfo.getHostAddresses()[0]);
+                }
+
+                @Override
+                public void serviceRemoved(ServiceEvent event) {
+                    System.out.println("Crop Service removed: " + event.getInfo());
+                }
+
+                @Override
+                public void serviceAdded(ServiceEvent event) {
+                    System.out.println("Crop Service added: " + event.getInfo());
+                }
+            });
+
+            // Wait a bit
+            Thread.sleep(2000);
+
+            jmdns.close();
+
+        } catch (UnknownHostException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 	
 }

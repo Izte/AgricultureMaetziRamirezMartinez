@@ -45,20 +45,7 @@ public class Service1ClimateServer extends climateServiceImplBase {
 		int port = Integer.valueOf(prop.getProperty("service_port"));// #.50051;
 
 		Server server;
-		/*
-		// create an instance of the outer class and use it to make requests
-        Service1ClimateServer server1 = new Service1ClimateServer();
-        // use the client to make requests
-        Request request = new Request.Builder()
-            .url("https://www.example.com")
-            .build();
-        try {
-            Response response = server1.client.newCall(request).execute();
-            System.out.println(response.body().string());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-		*/
+	
 		try {
 	        // Create a JmDNS instance for service discovery
 	        JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
@@ -74,7 +61,8 @@ public class Service1ClimateServer extends climateServiceImplBase {
 	        // Close the JmDNS instance
 	        jmdns.close();
 	    } catch (IOException | InterruptedException e) {
-	        e.printStackTrace();
+	        //e.printStackTrace();
+	    	System.err.println("Error occurred during JmDNS discovery: " + e.getMessage());
 	    }
 		
 		try {

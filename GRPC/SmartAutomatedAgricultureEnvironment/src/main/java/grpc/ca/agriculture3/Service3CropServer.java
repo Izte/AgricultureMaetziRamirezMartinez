@@ -27,6 +27,7 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.Interceptor.Chain;
+import okhttp3.OkHttpClient;
 
 public class Service3CropServer extends cropServiceImplBase{
 	public static void main(String[] args) {
@@ -37,7 +38,7 @@ public class Service3CropServer extends cropServiceImplBase{
 		cropserver.registerService(prop);
 		
 		// Initialize Log4j
-        PropertyConfigurator.configure("src/main/resources/Service1.properties");
+        PropertyConfigurator.configure("src/main/resources/Service3.properties");
 		
 		int port = Integer.valueOf(prop.getProperty("service_port"));//#.50054;
 		
@@ -49,8 +50,8 @@ public class Service3CropServer extends cropServiceImplBase{
 
 	        // Add a listener for service events
 	        Listener listener = new Listener();
-	        jmdns.addServiceListener("_service1_tcp.local.", listener);
-	        System.out.println("Discovered _service3_tcp.local.");
+	        jmdns.addServiceListener("_service3._tcp.local.", listener);
+	        System.out.println("Discovered _service3._tcp.local.");
 	        
 	        // Wait for services to be discovered
 	        Thread.sleep(5000);
@@ -81,7 +82,6 @@ public class Service3CropServer extends cropServiceImplBase{
 		Properties prop = new Properties();
 		
 		try (InputStream input = new FileInputStream("src/main/resources/Service3.properties")){
-			//prop = new Properties();
 			
 			//load a properties file
 			prop.load(input);
@@ -151,14 +151,10 @@ public class Service3CropServer extends cropServiceImplBase{
 		}
 	}
 	
-	//private OkHttpClient client;
+	private OkHttpClient client;
 	
 	public class LoggingInterceptor implements Interceptor {
-	    /*
-		// create the OkHttpClient with the logging
-		LoggingInterceptor loggingInterceptor = new LoggingInterceptor();
-        client = new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
-		*/
+	    
 	    private final Logger logger = Logger.getLogger(LoggingInterceptor.class.getName());
 
 	    @Override public Response intercept(Chain chain) throws IOException {
@@ -182,7 +178,6 @@ public class Service3CropServer extends cropServiceImplBase{
 	@Override
 	public StreamObserver<CropTypeRequest> getCropStatus(StreamObserver<CropStatusResponse> responseObserver) {
 		// TODO Auto-generated method stub
-		//return super.getCropStatus(responseObserver);
 		//System.out.println("Receiving Crop Type Request ");
 		ArrayList<String> list = new ArrayList<String>();
 		return new StreamObserver<CropTypeRequest>() {

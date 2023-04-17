@@ -12,11 +12,8 @@ import javax.jmdns.JmDNS;
 import javax.jmdns.ServiceEvent;
 import javax.jmdns.ServiceInfo;
 import javax.jmdns.ServiceListener;
-
 import org.apache.log4j.PropertyConfigurator;
 
-import grpc.ca.agriculture1.Service1ClimateServer.Listener;
-import grpc.ca.agriculture1.Service1ClimateServer.LoggingInterceptor;
 import grpc.ca.agriculture2.irrigationServiceGrpc.irrigationServiceImplBase;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
@@ -24,9 +21,10 @@ import io.grpc.stub.StreamObserver;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.Interceptor.Chain;
+import okhttp3.OkHttpClient;
 
 public class Service2IrrigationServer extends irrigationServiceImplBase{
+
 	public static void main(String[] args) {
 		Service2IrrigationServer irrigationserver = new Service2IrrigationServer();
 		
@@ -35,7 +33,7 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 		irrigationserver.registerService(prop);
 		
 		// Initialize Log4j
-        PropertyConfigurator.configure("src/main/resources/Service1.properties");
+        PropertyConfigurator.configure("src/main/resources/Service2.properties");
 		
 		int port = Integer.valueOf(prop.getProperty("service_port"));//#.50052;
 		
@@ -47,8 +45,8 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 
 	        // Add a listener for service events
 	        Listener listener = new Listener();
-	        jmdns.addServiceListener("_service1_tcp.local.", listener);
-	        System.out.println("Discovered _service2_tcp.local.");
+	        jmdns.addServiceListener("_service2._tcp.local.", listener);
+	        System.out.println("Discovered _service2._tcp.local.");
 	        
 	        // Wait for services to be discovered
 	        Thread.sleep(5000);
@@ -144,14 +142,10 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 		}
 	}
 	
-	//private OkHttpClient client;
+	private OkHttpClient client;
 	
 	public class LoggingInterceptor implements Interceptor {
-	    /*
-		// create the OkHttpClient with the logging
-		LoggingInterceptor loggingInterceptor = new LoggingInterceptor();
-	    client = new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
-		*/
+	    		
 	    private final Logger logger = Logger.getLogger(LoggingInterceptor.class.getName());
 
 	    @Override public Response intercept(Chain chain) throws IOException {
@@ -166,7 +160,7 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 	        long t2 = System.nanoTime();
 	        logger.log(Level.INFO, String.format("Received response for %s in %.1fms%n%s",
 	        response.request().url(), (t2 - t1) / 1e6d, response.headers()));
-	
+	        
 	        return response;
 		}
 	}
@@ -210,33 +204,11 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 				System.out.println("Receiving Cancelation Request: ");
 								
 				CancelationResponse replay = CancelationResponse.newBuilder().setMycancelationresponse(request.getMycancelationrequest()).build();
-			
-				// cancel the irrigation process using the cancellation string
-	            // and handle any errors that may occur
-	            /*try {
-	                cancelIrrigationProcess(cancelationString);
-	            } catch (IrrigationProcessNotFoundException e) {
-	                // log the error and send an error response back to the client
-	                System.err.println("Error: " + e.getMessage());
-	                responseObserver.onError(Status.NOT_FOUND.withDescription(e.getMessage()).asException());
-	                return;
-	            } catch (IrrigationProcessAlreadyCancelledException e) {
-	                // log the error and send an error response back to the client
-	                System.err.println("Error: " + e.getMessage());
-	                responseObserver.onError(Status.FAILED_PRECONDITION.withDescription(e.getMessage()).asException());
-	                return;
-	            } catch (Exception e) {
-	                // log the error and send an error response back to the client
-	                System.err.println("Error: " + e.getMessage());
-	                responseObserver.onError(Status.INTERNAL.withDescription(e.getMessage()).asException());
-	                return;
-	            }*/
-
+				                     
 	            // send an empty response back to the client to confirm cancellation
-	            //responseObserver.onNext(CancelationResponse.getDefaultInstance());
 	            responseObserver.onNext(replay);
 			}
-
+			// and handle any errors that may occur
 			@Override
 			public void onError(Throwable t) {
 				// TODO Auto-generated method stub
@@ -251,22 +223,4 @@ public class Service2IrrigationServer extends irrigationServiceImplBase{
 			}
 		};
 	}
-	/*
-	private void cancelIrrigationProcess(String cancellationString) throws IrrigationProcessNotFoundException, IrrigationProcessAlreadyCancelledException {
-	    // search for the irrigation process using the cancellation string
-	    IrrigationProcess process = findIrrigationProcessByCancellationString(cancellationString);
-
-	    // if the process was not found, throw an exception
-	    if (process == null) {
-	        throw new IrrigationProcessNotFoundException("Irrigation process not found for cancellation string: " + cancellationString);
-	    }
-
-	    // if the process was already cancelled, throw an exception
-	    if (process.isCancelled()) {
-	        throw new IrrigationProcessAlreadyCancelledException("Irrigation process already cancelled for cancellation string: " + cancellationString);
-	    }
-
-	    // cancel the process
-	    process.cancel();
-	}*/
 }
