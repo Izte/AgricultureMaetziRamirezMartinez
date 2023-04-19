@@ -53,7 +53,7 @@ public class Service1ClimateServer extends climateServiceImplBase {
 	        // Add a listener for service events
 	        Listener listener = new Listener();
 	        jmdns.addServiceListener("_service1._tcp.local.", listener);
-	        System.out.println("Discovery _service1._tcp.local.");
+	        System.out.println("\n Discovery _service1._tcp.local. \n");
 	        
 	        // Wait for services to be discovered
 	        Thread.sleep(5000);
@@ -67,7 +67,8 @@ public class Service1ClimateServer extends climateServiceImplBase {
 		
 		try {
 			server = ServerBuilder.forPort(port).addService(climateserviceserver).build().start();
-			System.out.println("Server 1 for Climate Service is running...");
+			System.out.println("--------------------------------------------------------------------");
+			System.out.println("\n Server 1 for Climate Service is running...");
 			server.awaitTermination();
 
 		} catch (IOException | InterruptedException e) {
@@ -92,6 +93,7 @@ public class Service1ClimateServer extends climateServiceImplBase {
 			System.out.println("\t service_name: " + prop.getProperty("service_name"));
 			System.out.println("\t service_description: " + prop.getProperty("service_description"));
 			System.out.println("\t service_port: " + prop.getProperty("service_port"));
+			System.out.println("--------------------------------------------------------------------");
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -116,6 +118,7 @@ public class Service1ClimateServer extends climateServiceImplBase {
 			jmdns.registerService(serviceInfo);
 
 			System.out.printf("registrering service with type %s and name %s \n", service_type, service_name);
+			System.out.println("--------------------------------------------------------------------");
 
 			// Wait a bit for the service to register
 			Thread.sleep(1000);
@@ -147,14 +150,10 @@ public class Service1ClimateServer extends climateServiceImplBase {
 		}
 	}
 	
-	//private OkHttpClient client;
-	
+	private OkHttpClient client;
+	//This is using for  the Remote Error Handling
 	public static class LoggingInterceptor implements Interceptor {
-	    /*
-		// create the OkHttpClient with the logging
-		LoggingInterceptor loggingInterceptor = new LoggingInterceptor();
-        client = new OkHttpClient.Builder().addInterceptor(loggingInterceptor).build();
-		*/
+	    
 	    private static final Logger logger = Logger.getLogger(LoggingInterceptor.class.getName());
 
 	    @Override public Response intercept(Chain chain) throws IOException {

@@ -30,22 +30,22 @@ public class Service1ClimateClient {
 		try {
 			// method getTemperature
 			TemperatureRequest request = TemperatureRequest.newBuilder()
-					.setMytemperature("The temperatur is 14 degrees ").build();
+					.setMytemperature(" 14 degrees ").build();
 
 			TemperatureResponse reply = blockingstub.getTemperature(request);
 
 			// String temperature = reply.getMytemperatureresponse();
 
-			System.out.println("Message send by the server " + reply.getMytemperatureresponse());
+			System.out.println("Message send by the server \n" + reply.getMytemperatureresponse());
 			System.out.println("--------------------------------------------------------------------");
 
 			// method getHumidity
-			HumidityRequest requestHR = HumidityRequest.newBuilder().setMyhumidity("The humidity is 60% ").build();
+			HumidityRequest requestHR = HumidityRequest.newBuilder().setMyhumidity(" 60% ").build();
 
 			HumidityResponse replyHR = blockingstub.getHumidity(requestHR);
 
 			// String humidity = replyHR.getMyhumidityresponse();
-			System.out.println("Message send by the server " + replyHR.getMyhumidityresponse());
+			System.out.println("Message send by the server \n" + replyHR.getMyhumidityresponse());
 			System.out.println("--------------------------------------------------------------------");
 
 			// method GetRain
@@ -56,7 +56,7 @@ public class Service1ClimateClient {
 			RainfallResponse replyRR = blockingstub.getRain(requestRR);
 
 			// String rainfall = replyRR.getMyrainfalrResponse();
-			System.out.println("Message send by the server " + replyRR.getMyrainfalrResponse());
+			System.out.println("Message send by the server \n" + replyRR.getMyrainfalrResponse());
 			System.out.println("--------------------------------------------------------------------");
 
 			try {
@@ -66,7 +66,7 @@ public class Service1ClimateClient {
 		        // Add a listener for service events
 		        Listener listener = new Listener();
 		        jmdns.addServiceListener("_service1._tcp.local.", listener);
-		        System.out.println("Discovery _service1._tcp.local.");
+		        System.out.println("Discovery _service1._tcp.local. \n");
 		        
 		        // Wait for services to be discovered
 		        Thread.sleep(5000);
