@@ -51,7 +51,7 @@ public class Service3CropServer extends cropServiceImplBase{
 	        // Add a listener for service events
 	        Listener listener = new Listener();
 	        jmdns.addServiceListener("_service3._tcp.local.", listener);
-	        System.out.println("Discovered _service3._tcp.local.");
+	        System.out.println("Discovered _service3._tcp.local. \n");
 	        
 	        // Wait for services to be discovered
 	        Thread.sleep(5000);
@@ -65,7 +65,8 @@ public class Service3CropServer extends cropServiceImplBase{
 		
 		try {
 			server = ServerBuilder.forPort(port).addService(cropserver).build().start();
-			System.out.println("Server 3 for Crop Service is running...");
+			System.out.println("--------------------------------------------------------------------");
+			System.out.println("Server 3 for Crop Service is running... \n");
 			server.awaitTermination();
 		
 		} catch(IOException | InterruptedException e) {
@@ -92,6 +93,7 @@ public class Service3CropServer extends cropServiceImplBase{
             System.out.println("\t service_name: " +prop.getProperty("service_name"));
             System.out.println("\t service_description: " +prop.getProperty("service_description"));
 	        System.out.println("\t service_port: " +prop.getProperty("service_port"));
+	        System.out.println("--------------------------------------------------------------------");
 
 		} catch(IOException ex) {
 			ex.printStackTrace();
@@ -115,7 +117,8 @@ public class Service3CropServer extends cropServiceImplBase{
 			ServiceInfo serviceInfo = ServiceInfo.create(service_type, service_name, service_port, service_description_properties);
             jmdns.registerService(serviceInfo);
             
-            System.out.printf("registrering service with type %s and name %s \n", service_type, service_name);
+            System.out.printf("\n registrering service with type %s and name %s \n", service_type, service_name);
+            System.out.println("--------------------------------------------------------------------");
             
             // Wait a bit
             Thread.sleep(1000);

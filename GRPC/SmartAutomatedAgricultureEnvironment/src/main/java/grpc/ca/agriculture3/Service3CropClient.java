@@ -41,7 +41,7 @@ public class Service3CropClient {
 	        // Add a listener for service events
 	        Listener listener = new Listener();
 	        jmdns.addServiceListener("_service3._tcp.local.", listener);
-	        System.out.println("Discovered _service3._tcp.local.");
+	        System.out.println("Discovered _service3._tcp.local. \n");
 	        
 	        // Wait for services to be discovered
 	        Thread.sleep(5000);
@@ -83,7 +83,8 @@ public class Service3CropClient {
 			@Override
 			public void onNext(CropStatusResponse msg) {
 				// TODO Auto-generated method stub
-				System.out.println("Message send by the server " + msg.getMycropstatus());
+				System.out.println("Message send by the server \n" + msg.getMycropstatus());
+				System.out.println("--------------------------------------------------------------------");
 			}
 
 			@Override
@@ -134,7 +135,8 @@ public class Service3CropClient {
 			@Override
 			public void onNext(CropPlanResponse value) {
 				// TODO Auto-generated method stub
-				System.out.println("Message send by the server: " + value.getCropPlan());
+				System.out.println("Message send by the server: \n" + value.getCropPlan());
+				System.out.println("--------------------------------------------------------------------");
 			}
 
 			@Override

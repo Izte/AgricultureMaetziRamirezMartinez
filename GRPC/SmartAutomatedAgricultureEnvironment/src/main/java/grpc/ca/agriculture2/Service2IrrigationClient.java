@@ -47,7 +47,7 @@ public class Service2IrrigationClient {
 			// Add a listener for service events
 			Listener listener = new Listener();
 			jmdns.addServiceListener("_service2._tcp.local.", listener);
-			System.out.println("Discovery _service2._tcp.local.");
+			System.out.println("Discovery _service2._tcp.local. \n");
 
 			// Wait for services to be discovered
 			Thread.sleep(5000);
@@ -87,7 +87,7 @@ public class Service2IrrigationClient {
 
 		IrrigationStatusResponse replyIS = blockingstub.setIrrigation(requestIP);
 
-		System.out.println("Message send by the server: " + replyIS.getMyirrigationstatusResponse());
+		System.out.println("Message send by the server: \n" + replyIS.getMyirrigationstatusResponse());
 	}
 
 	public static void GetIrrigStatus() {
@@ -103,7 +103,7 @@ public class Service2IrrigationClient {
 			@Override
 			public void onNext(CurrentStatusResponse value) {
 				// TODO Auto-generated method stub
-				System.out.println("Message send by the server " + value.getMycurrentstatusResponse());
+				System.out.println("Message send by the server \n" + value.getMycurrentstatusResponse());
 
 			}
 

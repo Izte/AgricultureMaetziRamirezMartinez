@@ -69,7 +69,7 @@ public class Service3GUIApplication {
             			public void onNext(CropStatusResponse msg) {
             				// TODO Auto-generated method stub
             				textPane.setText("");
-                            textPane.setText("Message sent by the server: " + msg.getMycropstatus());
+                            textPane.setText("Message sent by the server: \n" + msg.getMycropstatus());
             			}
 
             			@Override
@@ -117,14 +117,14 @@ public class Service3GUIApplication {
 			public void actionPerformed(ActionEvent e) {
                 try {
                 	
-                	CropPlanRequest requestCPR = CropPlanRequest.newBuilder().setMycroptype("Healthy").build();
+                	CropPlanRequest requestCPR = CropPlanRequest.newBuilder().setMycroptype("Irrigate the crop twice per week ").build();
             		StreamObserver<CropPlanResponse> responseObserver = new StreamObserver<CropPlanResponse>() {
 
             			@Override
             			public void onNext(CropPlanResponse value) {
             				// TODO Auto-generated method stub
 							textPane.setText("");
-		                    textPane.setText("Message sent by the server: " + value.getCropPlan());
+		                    textPane.setText("Message sent by the server: \n" + value.getCropPlan());
 							
 						}
 
@@ -153,7 +153,7 @@ public class Service3GUIApplication {
 	
 	private static void discoveryService3Crop(String service_type) {
 
-        try {
+		try {
             // Create a JmDNS instance
             JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
             jmdns.addServiceListener(service_type, new ServiceListener() {
@@ -183,7 +183,7 @@ public class Service3GUIApplication {
                     System.out.println("Crop Service added: " + event.getInfo());
                 }
             });
-
+            
             // Wait a bit
             Thread.sleep(2000);
 

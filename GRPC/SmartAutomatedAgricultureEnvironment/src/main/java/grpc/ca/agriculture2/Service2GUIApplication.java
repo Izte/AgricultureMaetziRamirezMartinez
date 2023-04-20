@@ -71,7 +71,7 @@ public class Service2GUIApplication {
                 	IrrigationStatusResponse replyIS = blockingStub.setIrrigation(request);
                 	
                     textPane.setText("");
-                    textPane.setText("Message sent by the server: " + replyIS.getMyirrigationstatusResponse());
+                    textPane.setText("Message sent by the server: \n" + replyIS.getMyirrigationstatusResponse());
                 } catch (StatusRuntimeException ex) {
                     ex.printStackTrace();
                 }
@@ -91,7 +91,7 @@ public class Service2GUIApplication {
 						public void onNext(CurrentStatusResponse value) {
 							// TODO Auto-generated method stub
 							textPane.setText("");
-		                    textPane.setText("Message sent by the server: " + value.getMycurrentstatusResponse());
+		                    textPane.setText("Message sent by the server: \n" + value.getMycurrentstatusResponse());
 							
 						}
 
@@ -127,7 +127,7 @@ public class Service2GUIApplication {
             				// TODO Auto-generated method stub
             				
             				textPane.setText("");
-                            textPane.setText("Message sent by the server: " + msg.getMycancelationresponse());
+                            textPane.setText("Message sent by the server: \n" + msg.getMycancelationresponse());
                             
             			}
 

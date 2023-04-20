@@ -39,7 +39,7 @@ public class Service1GUIApplication {
 
                     int port = climateInfo.getPort();
 
-                    System.out.println("resolving " + service_type + " with properties ...");
+                    System.out.println("\n resolving " + service_type + " with properties ...");
                     System.out.println("\t service_port: " + port);
                     System.out.println("\t service_type:" + event.getType());
                     System.out.println("\t service_name: " + event.getName());
@@ -114,11 +114,11 @@ public class Service1GUIApplication {
 			public void actionPerformed(ActionEvent e) {
                 try {
                 	
-                	TemperatureRequest request = TemperatureRequest.newBuilder().setMytemperature("The temperatur is 14 degrees").build();
+                	TemperatureRequest request = TemperatureRequest.newBuilder().setMytemperature(" 14 degrees").build();
                 	TemperatureResponse reply = blockingStub.getTemperature(request);
                 	
                     textPane.setText("");
-                    textPane.setText("Message sent by the server: " + reply.getMytemperatureresponse());
+                    textPane.setText("Message sent by the server: \n" + reply.getMytemperatureresponse());
                 } catch (StatusRuntimeException ex) {
                     ex.printStackTrace();
                 }
@@ -128,12 +128,12 @@ public class Service1GUIApplication {
 		humidityButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                 try {
-                	HumidityRequest request = HumidityRequest.newBuilder().setMyhumidity("The humidity is 60% ").build();
+                	HumidityRequest request = HumidityRequest.newBuilder().setMyhumidity(" 60% ").build();
                 	
                 	HumidityResponse reply = blockingStub.getHumidity(request);
                 	
                     textPane.setText("");
-                    textPane.setText("Message sent by the server: " + reply.getMyhumidityresponse());
+                    textPane.setText("Message sent by the server: \n" + reply.getMyhumidityresponse());
                 } catch (StatusRuntimeException ex) {
                     ex.printStackTrace();
                 }
@@ -143,11 +143,11 @@ public class Service1GUIApplication {
 		rainfullButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
                 try {
-                	RainfallRequest request = RainfallRequest.newBuilder().setMystartdate("From 12th to 14ht April 2023, ").setMyenddate("light rain showers 0.1mm ").build();
+                	RainfallRequest request = RainfallRequest.newBuilder().setMystartdate("From 12th to 14ht April 2023, ").setMyenddate("\n light rain showers 0.1mm ").build();
                             
                 	RainfallResponse reply = blockingStub.getRain(request);
                     textPane.setText("light rain showers 0.1mm ");
-                    textPane.setText("Message sent by the server: " + reply.getMyrainfalrResponse());
+                    textPane.setText("Message sent by the server: \n" + reply.getMyrainfalrResponse());
                 } catch (StatusRuntimeException ex) {
                     ex.printStackTrace();
                 }
