@@ -100,7 +100,7 @@ public class Service3GUIApplication {
             			// Mark the end of request
             			requestCT.onCompleted();
             			
-            			Thread.sleep(10000);
+            			Thread.sleep(1000);
             		} catch (RuntimeException ex) {
             			ex.printStackTrace();
             		} catch(InterruptedException ex) {
